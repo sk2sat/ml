@@ -28,7 +28,7 @@ body_file = open('body.txt', 'r')
 title = body_file.readline()	# タイトルの読み込み
 raw_body = body_file.read()
 raw_body += "\n\n"
-raw_body += "このメールはsksatが開発した簡易メール送信プログラム( https://github.com/sk2sat/ml )から送信されています。"
+raw_body += u"このメールはsksatが作成した簡易メール送信プログラム( https://github.com/sk2sat/ml )から送信されています。"
 
 body = MIMEText(raw_body.encode(jp), 'plain', jp)
 
