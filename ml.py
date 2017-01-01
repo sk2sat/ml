@@ -19,7 +19,7 @@ print('From = ' + from_addr)
 # 宛先のリストファイル
 addr_file = open('addrs.lst', 'r')
 
-to_addr = addr_file.readline()
+to_addrs = addr_file.readlines()
 
 #print(addr_file.readline())
 
@@ -30,9 +30,9 @@ raw_body = body_file.read()
 
 body = MIMEText(raw_body)
 
-body['Subject'] = 'てすと'
+body['Subject'] = title
 body['From'] = from_addr
-body['To'] = to_addr
+body['To'] = ','.join(to_addrs)
 
 print(body)
 
