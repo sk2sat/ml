@@ -19,8 +19,9 @@ print('From = ' + from_addr)
 # 宛先のリストファイル
 addr_file = open('addrs.lst', 'r')
 
-print(addr_file.readline())
+to_addr = addr_file.readline()
 
+#print(addr_file.readline())
 
 # 本文の読み込み
 body_file = open('body.txt', 'r')
@@ -31,18 +32,20 @@ body = MIMEText(raw_body)
 
 body['Subject'] = 'てすと'
 body['From'] = from_addr
-
+body['To'] = to_addr
 
 print(body)
 
 # メールの送信 (Gmail)
-try:
-	s = smtplib.SMTP('skmt.aesc@gmail.com', 587)
-	s.ehlo()
-	s.starttls()
-	s.ehlo()
-	s.login(from_addr, passwd)
-	s.send_message(body)
-	s.close()
-except Exception:
-	print("Error: can't send mail")
+#try:
+s = smtplib.SMTP('smtp.gmail.com', 587)
+s.ehlo()
+s.starttls()
+s.ehlo()
+s.login(from_addr, passwd)
+s.send_message(body)
+s.close()
+print('メールの送信に成功しました。')
+#except Exception:
+#print("Error: can't send mail")
+
