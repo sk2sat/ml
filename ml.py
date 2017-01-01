@@ -30,7 +30,7 @@ raw_body = body_file.read()
 raw_body += "\n\n"
 raw_body += "このメールはsksatが開発した簡易メール送信プログラム( https://github.com/sk2sat/ml )から送信されています。"
 
-body = MIMEText(raw_body)
+body = MIMEText(raw_body.encode(jp), 'plain', jp)
 
 body['Subject'] = title
 body['From'] = from_addr
